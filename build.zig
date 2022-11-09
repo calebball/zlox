@@ -14,6 +14,8 @@ pub fn build(b: *std.build.Builder) void {
     const exe = b.addExecutable("zlox", "src/main.zig");
     exe.setTarget(target);
     exe.setBuildMode(mode);
+    exe.linkLibC();
+    exe.addIncludeDir("c");
     exe.install();
 
     const run_cmd = exe.run();
